@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css"
+import Result from "./Components/Result";
+import { useSelector } from "react-redux";
 
-function App() {
+const App = () => {
+  const total = useSelector(counterstate => counterstate)
+  console.log(total)
+  const [num , setnum] = useState(0)
+  const button = () => {
+    setnum(num + 1)
+  }
+
+  const buttonminus = () => {
+    setnum(num - 1)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="div-APP">
+     <button onClick={button} className="button">+</button>
+     <button onClick={buttonminus} className="button">-</button>
+     <h2>{num}</h2>
+     <Result/>
     </div>
   );
 }
-
+ 
 export default App;
